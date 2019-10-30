@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p> Open your Console to see result. Try to reload page and get again</p>
+	<button onclick="saveObject()">SAVE</button>
+	<button onclick="getObject()">GET</button>
+
+	<script type="text/javascript">
+		getObject();
+
+		function getObject(){
+			var lanFromLocal = JSON.parse(localStorage.getItem("student1"));
+			console.log(lanFromLocal);
+		}
+
+		function saveObject(){
+			var studentLan = {
+				name:"Lan",
+				email:"lan@example.com"
+			}
+
+			localStorage.setItem("student1", JSON.stringify(studentLan));
+		}
+	</script>
+</body>
+</html>

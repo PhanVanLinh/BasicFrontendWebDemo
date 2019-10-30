@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<p>Note: Click on Title to see Detail </p>
+	<div id="list">
+	</div>
+	<div id="detail" style="border: 2px solid black">
+		<button onclick="onBackPressed()">Back</button>
+		<h2 id="detail-title" style="color:red"></h2>
+		<h4 id="detail-info"></h4>
+	</div>
+
+	<script type="text/javascript">
+		var item1 = {
+			title:"Title 1. Click me!",
+			info: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis id facilis beatae quis soluta, fugit distinctio praesentium aspernatur quaerat accusamus facere. Magnam officia rem dolore eum dolor atque dolores! Facilis!"	
+		}
+		var item2 = {
+			title: "Title 2. 123456 Click me!",
+			info: "This is another detail"
+		}
+		var items = [item1, item2];
+
+		var listObj = document.getElementById("list");
+		for(var i = 0; i < items.length; i++){
+			var titleObj = document.createElement("h2");
+			titleObj.innerHTML = items[i].title;
+			titleObj.onclick = function(arg){
+				return function(){
+					var selectedItem = items[arg];
+					displayDetail(selectedItem);
+				}
+			}(i);
+			listObj.appendChild(titleObj);
+		}
+
+		function displayDetail(item){
+			showDetailAndHideList();
+
+			document.getElementById("detail-title").innerHTML = item.title;
+			document.getElementById("detail-info").innerHTML = item.info;
+		}
+
+		function onBackPressed(){
+			showListAndHideDetail();
+		}
+
+		function showListAndHideDetail(){
+			document.getElementById("list").style.display = "block";
+			document.getElementById("detail").style.display = "none";
+		}
+
+		function showDetailAndHideList(){
+			document.getElementById("list").style.display = "none";
+			document.getElementById("detail").style.display = "block";
+		}
+	</script>
+</body>
+</html>

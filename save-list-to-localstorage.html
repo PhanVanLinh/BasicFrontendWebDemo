@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p> Open your Console to see result. Try to reload page and get again</p>
+	<button onclick="saveObject()">SAVE</button>
+	<button onclick="getObject()">GET</button>
+
+	<script type="text/javascript">
+		getObject();
+
+		function getObject(){
+			var students = JSON.parse(localStorage.getItem("students"));
+			console.log(students);
+		}
+
+		function saveObject(){
+			var student1 = {
+				name: "Lan",
+				score: 8
+			}
+
+			var student2 ={
+				name: "Hoa",
+				score: 10
+			}
+
+			var students = [student1, student2];
+			localStorage.setItem("students", JSON.stringify(students));
+		}
+	</script>
+</body>
+</html>
