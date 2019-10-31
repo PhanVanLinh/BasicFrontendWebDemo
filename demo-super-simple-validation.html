@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<body>
+	<p id="error-name" style="color: red"></p>
+	<input id="input-name" type="" placeholder="Your Favorite Language">
+	<button onclick="onSubmitClicked()">Submit</button>
+
+	<script type="text/javascript">
+		
+		function onSubmitClicked(){
+			var inputName = document.getElementById("input-name").value;
+			if(!inputName){
+				document.getElementById("error-name").innerHTML = "Language is empty or undefined or null";
+			} else if(inputName.length < 5){
+				document.getElementById("error-name").innerHTML = "Language too short (should be > 4)";
+			} else if(inputName != "Javascript"){
+				document.getElementById("error-name").innerHTML = "Your favorite must be Javascript";
+			} else {
+				document.getElementById("error-name").innerHTML = "";
+				alert("Congrat! You enter correct favorite language");
+			}
+		}
+	</script>
+</body>
+</html>
